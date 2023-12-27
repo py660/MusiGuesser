@@ -43,7 +43,7 @@
         <div id="measure">
             <div id="hud" class="gridcontainer">
                 <div class="griditem" id="points">0</div>
-                <div class="griditem">points</div>
+                <div class="griditem id="pointsLabel">points</div>
                 <div class="griditem" id="status">Activating Javascript...</div>
                 <div class="griditem" id="time">00:00.00</div>
                 <div class="griditem" id="songnumber">#1</div>
@@ -54,21 +54,23 @@
                 <p>Press the magic button to play the song.</p>
             </div>
             <div id="answersection" class="gamecomponent">
-                <label id="title" class="label" for="titleinput">Title:</label> <span contenteditable="true" class="input" id="titleinput" placeholder="Never Gonna Give You Up"></span>
+                <br />
+                <label id="title" class="label" for="titleinput">Title</label> <span contenteditable="true" class="input" id="titleinput" placeholder="Never Gonna Give You Up"></span>
                 <br/>
-                <label id="artist" class="label" for="artistinput">Artist:</label> <span contenteditable="true" class="input" id="artistinput" placeholder="Rick Astley"></span>
+                <label id="artist" class="label" for="artistinput">Artist</label> <span contenteditable="true" class="input" id="artistinput" placeholder="Rick Astley"></span>
                 <br/>
             </div>
             <div id="resultsection" class="gamecomponent">
-                <label id="title" class="label" for="titleinput">Title:</label> </span><span class="input" id="titleanswer"></span>
+                <label id="title" class="label" for="titleinput">Title</label> </span><span class="input" id="titleanswer"></span>
                 <br/>
-                <label id="artist" class="label" for="artistinput">Artist:</label> <span class="input" id="artistanswer"></span>
+                <label id="artist" class="label" for="artistinput">Artist</label> <span class="input" id="artistanswer"></span>
                 <br/>
                 <button id="open" class="openbtn btn">Open full song</button>
                 <br/>
             </div>
             <div id="footersection" class="footer gamecomponent">
                 <button id="restart">Restart</button>
+                <button class="hidden"></button>
                 <button id="settings">Settings</button>
             </div>
             <p>Copyright &#169;2023 py660, All Rights Reserved. <a href="https://github.com/py660">GitHub</a> - <a href="https://replit.com/@python660">Replit</a> - <a href="https://youtube.com/@sshhacker">YouTube</a></p>
