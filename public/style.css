@@ -1,59 +1,78 @@
-/* Main Page */
+/* Main Page Styling Enhanced */
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f7f7f7;
+    color: #333;
 }
 .gameframe {
-    background-color: #eeeeee;
-    border-radius: 10px;
-    -moz-transition: height .5s;
-    -ms-transition: height .5s;
-    -o-transition: height .5s;
-    -webkit-transition: height .5s;
-    transition: height .5s;
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: all .5s ease;
     height: 0;
     overflow: hidden;
     width: max(300px, 50vw);
 }
+
 .label, .input {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    color: #555;
 }
+
 .gridcontainer {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
+
 #status {
-    background-color: #ffffff;
-    transition: background-color 0.4s;
+    background-color: #fcfcfc;
+    transition: background-color 0.3s ease-in-out;
 }
-.btn {
-    margin: 10px;
+
+.btn, button {
+    padding: 8px 16px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
+
+.btn:hover, button:hover {
+    background-color: #296029;
+    transition: all 0.3s ease-in-out;
+}
+
 .footer {
-    border: solid 2px black;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
+    border-top: 1px solid #e0e0e0;
+    padding: 12px;
+    background-color: #fafafa;
 }
 
-/* Center */
+/* Center Alignment Enhanced */
 .center {
-    align: center;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Input Functionality */
+/* Input Functionality Enhanced */
 .input {
-    display: inline-block; /*inline-block*/
-    cursor: text;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     max-width: 500px;
-    padding: 5px;
-    margin: 5px;
-    background-color: #dddddd;
-    border-radius: 5px;
+    padding: 6px;
+    margin: 6px;
+    background-color: #ececec;
+    border-radius: 4px;
 }
 .input[contenteditable=true]:empty::before {
     content: attr(placeholder);
-    color: #999; 
+    color: #aaa; 
 }

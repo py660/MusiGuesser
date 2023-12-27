@@ -1,6 +1,7 @@
 entrypoint = "index.js"
 
 hidden = [".config"]
+modules = ["nodejs-20:v8-20230920-bd784b9"]
 
 [interpreter]
 command = [
@@ -79,3 +80,8 @@ support = true
       sourceMaps = true
       stopOnEntry = false
       type = "pwa-node"
+
+[deployment]
+run = ["node", "index.js"]
+deploymentTarget = "cloudrun"
+ignorePorts = false

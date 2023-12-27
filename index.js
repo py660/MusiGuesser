@@ -14,7 +14,7 @@
             let authOptions = {
                 url: 'https://accounts.spotify.com/api/token',
                 headers: {
-                    'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+                    'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64'))
                 },
                 form: {
                     grant_type: 'client_credentials'
@@ -95,7 +95,11 @@
         });
     }
     await auth();
-    setInterval(auth, 20 * 60 * 1000)
+    setInterval(() => {
+        auth().catch(err => {
+            console.error("Scheduled auth failed:", err);
+        });
+    }, 20 * 60 * 1000);
     console.log(token)
 
     const express = require('express');
