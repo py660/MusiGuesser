@@ -111,7 +111,7 @@ parseInt(hudPoints.innerText))/50);
 setInterval(()=>{
     if (timeStarted == 2){
         hudTime.innerText = new Date(new Date() - playing.date).toISOString().substring(14, 19) + "." + parseInt(new Date(new Date() - playing.date).getMilliseconds().toString().substring(0, 2)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-        hudTime.style.color = (new Date().getTime() - playing.date.getTime() > 30 * 1000) ? "red" : "black"
+        hudTime.style.color = (new Date().getTime() - playing.date.getTime() > 30 * 1000) ? "var(--danger)" : "var(--fore)"
     }
     // 1 => Hold the time, don't change it.
     if (timeStarted == 0){
@@ -244,7 +244,7 @@ function btnPress(){
             hudStatus.innerText = "Partially Correct! +" + (titleScore + artistScore) + " points";
             hudStatus.style.backgroundColor = "#fcba03";
         }
-        setTimeout(()=>{hudStatus.style.backgroundColor = "#ffffff";}, 1000);
+        setTimeout(()=>{hudStatus.style.backgroundColor = "var(--primary)";}, 1000);
         
 
         updateScore(titleScore, artistScore);
