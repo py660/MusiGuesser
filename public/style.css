@@ -1,12 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --back: #212425;
+        --back-accent: #313435;
+        --fore: white;
+        --primary: #1c96c0;
+        --primary-accent: #4cc6f0;
+        --danger: #f04a64;
+        --shadow: rgba(0,0,0,0.3);
+        --font: 'Poppins', Arial; 
+        --font-size: 1.5em;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --back: white;
+        --back-accent: #eee;
+        --fore: black;
+        --primary: #1c96c0;
+        --primary-accent: #4cc6f0;
+        --danger: #f04a64;
+        --shadow: rgba(0,0,0,0.3);
+        --font: 'Poppins', Arial; 
+        --font-szie: 1.5em;
+    }
+}
+
 /* Main Page */
 html, body {
     height: 100%;
     width: 100%;
-    margin: 0;
-    padding: 0;
+    margin: auto;
+    color: var(--fore);
+    font-family: var(--font);
+    background: var(--back);
 }
 .gameframe {
-    background-color: #eeeeee;
+    background-color: var(--back-accent);
     border-radius: 10px;
     -moz-transition: height .5s;
     -ms-transition: height .5s;
@@ -16,22 +47,29 @@ html, body {
     height: 0;
     overflow: hidden;
     width: max(300px, 50vw);
+    border: none;
+    margin-left: 3em;
+    margin-right: 3em;
+    width: 100%;
+    max-width: 500px;
 }
 .label, .input {
     font-size: 2rem;
 }
 .gridcontainer {
     font-size: 1.5rem;
+    border: none;
 }
 #status {
-    background-color: #ffffff;
+    background-color: var(--back-accent);
     transition: background-color 0.4s;
 }
 .btn {
     margin: 10px;
 }
 .footer {
-    border: solid 2px black;
+    background: var(--primary-accent);
+    box-shadow: 0 5px 5px 0 var(--shadow);
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
@@ -50,10 +88,48 @@ html, body {
     max-width: 500px;
     padding: 5px;
     margin: 5px;
-    background-color: #dddddd;
+    background-color: var(--back-accent);
     border-radius: 5px;
 }
+
 .input[contenteditable=true]:empty::before {
     content: attr(placeholder);
-    color: #999; 
+    color: var(--primary); 
+}
+
+button {
+    background: var(--back-accent);
+    color: var(--fore);
+    border: none;
+    box-shadow: 0 2px 2px 0 var(--shadow);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: var(--primary);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary-accent);
+}
+
+.gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr 1fr 1fr;
+    /* | 005 | PTS |           | 0:29 | */
+}
+.griditem {
+    background: var(--primary);
+    box-shadow: 0 2px 2px 0 var(--shadow);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
 }
