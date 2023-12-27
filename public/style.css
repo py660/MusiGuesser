@@ -1,0 +1,59 @@
+/* Main Page */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.gameframe {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    -webkit-transition: height .5s;
+    transition: height .5s;
+    height: 0;
+    overflow: hidden;
+    width: max(300px, 50vw);
+}
+.label, .input {
+    font-size: 2rem;
+}
+.gridcontainer {
+    font-size: 1.5rem;
+}
+#status {
+    background-color: #ffffff;
+    transition: background-color 0.4s;
+}
+.btn {
+    margin: 10px;
+}
+.footer {
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* Center */
+.center {
+    align: center;
+    text-align: center;
+}
+
+/* Input Functionality */
+.input {
+    display: inline-block; /*inline-block*/
+    cursor: text;
+    max-width: 500px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #dddddd;
+    border-radius: 5px;
+}
+.input[contenteditable=true]:empty::before {
+    content: attr(placeholder);
+    color: #999; 
+}

@@ -1,0 +1,11 @@
+.gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr 1fr 1fr;
+    /* | 005 | PTS |           | 0:29 | */
+}
+.griditem {
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+}
