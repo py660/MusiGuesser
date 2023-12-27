@@ -1,86 +1,188 @@
-<!DOCTYPE html>
-<html lang="en"> <!-- Can replace with your own locale -->
-<head>
-    <!-- Compatability -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-    <!-- Title and Description -->
-    <title>MusiGuesser</title>
-    <meta name="description" content="A fun trivia game to test your musical knowledge.">
-    <meta name="author" content="python660">
+@media (prefers-color-scheme: dark) {
+    :root {
+        --back: #212425;
+        --back-accent: #313435;
+        --back-accent-light: #616465;
+        --fore: white;
+        --primary: #1c96c0;
+        --primary-accent: #4cc6f0;
+        --danger: #f04a64;
+        --shadow: rgba(0,0,0,0.3);
+        --font: 'Poppins', Arial; 
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --back: white;
+        --back-accent: #ccc;
+        --back-accent-light: #eee;
+        --fore: black;
+        --primary: #1c96c0;
+        --primary-accent: #4cc6f0;
+        --danger: #f04a64;
+        --shadow: rgba(0,0,0,0.3);
+        --font: 'Poppins', Arial; 
+    }
+}
 
-    <!-- Social media -->
-    <meta property="og:title" content="MusiGuesser">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://replit.com/@python660">
-    <meta property="og:description" content="A fun trivia game to test your musical knowledge.">
-    <meta property="og:image" content="preview.png">
+/* Main Page */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    color: var(--fore);
+    font-family: var(--font);
+    background: var(--back);
+}
 
-    <!-- Preconnect to certain useful domains as needed -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+.gameframe {
+    background-color: var(--back-accent);
+    border-radius: 10px;
+    transition: height .5s;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+}
 
-    <!-- Favicons and icons -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+.label, .input {
+    font-size: 1.5rem;
+    display: inline-block;
+    max-width: 500px;
+    padding: 5px;
+    margin: 5px;
+    color: var(--fore);
+}
 
-    <!-- Link your CSS up here -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="grid.css">
-    <link rel="stylesheet" href="extra.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-</head>
-<body>
-    <!-- Website Content -->
-    <h1 class="title center">MusiGuesser</h1>
-    <p class="desc center">Ready to test your musical knowledge? Click on the magic button below!</p>
-    <div class="center">
-        <button id="play" class="playbtn btn animate__animated" disabled>Loading Song Index...</button>
-    </div>
+.label[for="titleinput"], .label[for="artistinput"] {
+    margin-right: 0;
+    background: var(--back-accent-light);
+    color: var(--fore);
+    box-shadow: 0 10px 10px 0 var(--shadow);
+    border-radius: 5px;
+}
 
-    <div id="game" class="gameframe center">
-        <div id="measure">
-            <div id="hud" class="gridcontainer">
-                <div class="griditem" id="points">0</div>
-                <div class="griditem id="pointsLabel">points</div>
-                <div class="griditem" id="status">Activating Javascript...</div>
-                <div class="griditem" id="time">00:00.00</div>
-                <div class="griditem" id="songnumber">#1</div>
-            </div>
-            <br/>
-            <div id="pregamesection" class="gamecomponent">
-                <label class="label">Make sure to turn up the volume!</label>
-                <p>Press the magic button to play the song.</p>
-            </div>
-            <div id="answersection" class="gamecomponent">
-                <br />
-                <label id="title" class="label" for="titleinput">Title</label> <span contenteditable="true" class="input" id="titleinput" placeholder="Never Gonna Give You Up"></span>
-                <br/>
-                <label id="artist" class="label" for="artistinput">Artist</label> <span contenteditable="true" class="input" id="artistinput" placeholder="Rick Astley"></span>
-                <br/>
-            </div>
-            <div id="resultsection" class="gamecomponent">
-                <label id="title" class="label" for="titleinput">Title</label> </span><span class="input" id="titleanswer"></span>
-                <br/>
-                <label id="artist" class="label" for="artistinput">Artist</label> <span class="input" id="artistanswer"></span>
-                <br/>
-                <button id="open" class="openbtn btn">Open full song</button>
-                <br/>
-            </div>
-            <div id="footersection" class="footer gamecomponent">
-                <button id="restart">Restart</button>
-                <button class="hidden"></button>
-                <button id="settings">Settings</button>
-            </div>
-            <p>Copyright &#169;2023 py660, All Rights Reserved. <a href="https://github.com/py660">GitHub</a> - <a href="https://replit.com/@python660">Replit</a> - <a href="https://youtube.com/@sshhacker">YouTube</a></p>
-        </div>
-    </div>
+.input[contenteditable=true]:empty::before {
+    content: attr(placeholder);
+    color: var(--primary); 
+}
 
-    <!-- Javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="growdiv.js"></script>
-    <script src="PatienceDiff.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+.gridcontainer {
+    font-size: 1.5rem;
+    border: none;
+}
+#hud {
+    font-size: 1rem;
+    height: 5em;
+    max-height: 1rem;
+}
+#status {
+    background-color: var(--primary);
+    transition: background-color 0.4s;
+}
+#time {
+    background-color: var(--primary);
+    color: var(--fore);
+}
+#songnumber {
+    background-color: var(--primary);
+}
+#points {
+    background-color: var(--primary);
+}
+#pointsLabel {
+    background-color: var(--primary-accent);
+}
+
+.btn {
+    margin: 10px;
+}
+.footer {
+    height: 1.5rem;
+    background: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 4em;
+}
+
+.footer button {
+    font-size: 1rem;
+    justify-content: center;
+    margin: auto;
+    margin-top: -1em;
+    
+}
+
+.hidden {
+    width: 10vw;
+    max-width: 50px;
+    background: transparent;
+    box-shadow: 0 0 0 0 var(--shadow);
+}
+
+/* Center */
+.center {
+    align: center;
+    text-align: center;
+}
+
+/* Input Functionality */
+.input {
+    display: inline-block;
+    cursor: text;
+    max-width: 500px;
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--primary-accent);
+    color: var(--fore);
+    box-shadow: 0 10px 10px 0 var(--shadow);
+    border-radius: 5px;
+}
+
+.input[contenteditable=true]:empty::before {
+    content: attr(placeholder);
+    color: var(--primary); 
+}
+
+button {
+    background: var(--back-accent-light);
+    color: var(--fore);
+    border: none;
+    box-shadow: 0 5px 5px 0 var(--shadow);
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: var(--primary);
+    box-shadow: 0 0 0 0 var(--shadow);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary-accent);
+}
+
+.gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr 1fr 1fr;
+    /* | 005 | PTS |           | 0:29 | */
+}
+.griditem {
+    background: var(--primary);
+    box-shadow: 0 2px 2px 0 var(--shadow);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+}
