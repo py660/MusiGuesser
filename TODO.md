@@ -3,10 +3,10 @@
 - Make the magic button more prominent
 - HINT button (reveals some characters)
 - history of guesses
-- Set song-number gamemode (highest score for 20 songs)
+- song-number gamemode (highest score in 20 songs)
     - Ending Modal
     - Option at start to choose infinite/set-song-number mode
-- song # indicator
 - leaderboard/high score
-- color themes
 - SETTINGs button
+    - Open settings upon first visit
+    - save settings
