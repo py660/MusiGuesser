@@ -130,7 +130,7 @@ function shuffle(array){
 function enumPlist(pid, offset){
     offset = offset || 0;
     $.ajax({
-        url: 'https://musiguesser.vercel.app/v1/playlists/' + pid + '/tracks?offset=' + offset,
+        url: 'https://musiguesser.python660.repl.co/v1/playlists/' + pid + '/tracks?offset=' + offset,
         success: function(response){
             //console.log(response.items);
 
