@@ -8,8 +8,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/v1/(.*)",
       "dest": "index.js"
+    },
+    {
+      "src": "/(?<id>[^/]+)",
+      "dest": "/public/$id"
     }
   ]
 }
