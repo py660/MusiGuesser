@@ -79,8 +79,3 @@ support = true
       sourceMaps = true
       stopOnEntry = false
       type = "pwa-node"
-
-[deployment]
-run = ["node", "index.js"]
-deploymentTarget = "cloudrun"
-ignorePorts = false
