@@ -10,8 +10,8 @@ html, body {
 }
 .gameframe {
     background-color: #fafafa;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* border: 1px solid #e0e0e0; */
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
     border-radius: 8px;
     transition: all .5s ease;
     height: 0;
