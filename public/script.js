@@ -1,17 +1,90 @@
-window.playlist = confirm("Christmas theme?") ? /*["37i9dQZF1DX0Yxoavh5qJV"]*/ ["1cSe1tbdYYYnyoP93yJlRA"] : [
-        "37i9dQZF1DWSThc8QnzIme", // Pop Drive (140)
-        "37i9dQZF1DXcBWIGoYBM5M", // Today's Top Hits (50)
-        "37i9dQZF1DX0kbJZpiYdZl", // Hot Hits USA (50)
-        "37i9dQZF1DX5dpn9ROb26T", // Best Pop Songs of 2022 (75)
-        "37i9dQZF1DXa2PvUpywmrr", // Party Hits (90)
-        "37i9dQZF1DWVmX5LMTOKPw", // Best Hit Songs of 2022 (50)
-        "37i9dQZF1DX0b1hHYQtJjp", // Just Good Music (60)
-        "7yVlImzPqbVdr8b6oBE7Sa" // Spotify API Demo [Custom Playlist] (21)
-    ];
+window.customConfirm = function(question) {
+    return new Promise((resolve, reject) => {
+        // Check for an existing overlay and remove it if it exists
+        let existingOverlay = document.getElementById('custom-confirm-overlay');
+        if (existingOverlay) {
+            existingOverlay.remove();
+        }
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'custom-confirm-overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = '1000';
+        overlay.style.opacity = '0'; // Start with an invisible overlay
+
+        // Create dialog box
+        const dialog = document.createElement('div');
+        dialog.id = 'custom-confirm-dialog';
+        dialog.style.backgroundColor = '#fff';
+        dialog.style.padding = '20px';
+        dialog.style.borderRadius = '10px';
+        dialog.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+        dialog.style.display = 'flex';
+        dialog.style.flexDirection = 'column';
+        dialog.style.alignItems = 'center';
+        dialog.style.justifyContent = 'center';
+        dialog.style.textAlign = 'center';
+        dialog.innerHTML = `<p>${question}</p>
+                            <div style="display: flex; width: 100%; flex-direction: row; align-items: center; justify-content: center;">
+                            <button id='confirm-yes' style='margin-right: 10px;'>Yes</button>
+                            <button id='confirm-no'>No</button></div>`;
+
+        // Append elements to the body
+        document.body.appendChild(overlay);
+        overlay.appendChild(dialog);
+
+        // Animate the overlay to fade in and zoom slightly
+        setTimeout(() => {
+            overlay.style.transition = 'opacity 0.4s ease-in-out, transform 0.4s ease-in-out';
+            overlay.style.opacity = '1';
+            overlay.style.transform = 'scale(1.05)';
+        }, 10);
+
+        // Button event listeners to resolve the promise
+        document.getElementById('confirm-yes').addEventListener('click', function() {
+            resolve(true);
+            overlay.remove();
+        });
+        document.getElementById('confirm-no').addEventListener('click', function() {
+            resolve(false);
+            overlay.remove();
+        });
+    });
+};
+
+let christmasThemeEnabled;
+let explicitContentEnabled;
+
+window.customConfirm("Enable christmas theme?")
+    .then(function(christmasTheme) {
+        christmasThemeEnabled = christmasTheme;
+        window.playlist = christmasThemeEnabled ? ["1cSe1tbdYYYnyoP93yJlRA"] : [
+            "37i9dQZF1DWSThc8QnzIme", // Pop Drive (140)
+            "37i9dQZF1DXcBWIGoYBM5M", // Today's Top Hits (50)
+            "37i9dQZF1DX0kbJZpiYdZl", // Hot Hits USA (50)
+            "37i9dQZF1DX5dpn9ROb26T", // Best Pop Songs of 2022 (75)
+            "37i9dQZF1DXa2PvUpywmrr", // Party Hits (90)
+            "37i9dQZF1DWVmX5LMTOKPw", // Best Hit Songs of 2022 (50)
+            "37i9dQZF1DX0b1hHYQtJjp", // Just Good Music (60)
+            "7yVlImzPqbVdr8b6oBE7Sa"  // Spotify API Demo [Custom Playlist] (21)
+        ];
+        // Only after the above promise is resolved we call the next confirm
+        return window.customConfirm("Enable explicit content?");
+    })
+    .then(function(explicit) {
+        explicitContentEnabled = explicit;
+});
+
 let songs = [];
 let id = 0; //Song index
-
-let explicit = !confirm("Disable explicit content?"); //Allow explict content?
 
 let audioObject;
 let playing;
