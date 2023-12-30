@@ -8,6 +8,7 @@ html, body {
     background: #f7f7f7;
     color: #333;
 }
+
 .gameframe {
     background-color: #fafafa;
     /* border: 1px solid #e0e0e0; */
@@ -72,6 +73,7 @@ html, body {
     background-color: #ececec;
     border-radius: 4px;
 }
+
 .input[contenteditable=true]:empty::before {
     content: attr(placeholder);
     color: #aaa; 
