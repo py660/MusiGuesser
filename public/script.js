@@ -1,4 +1,4 @@
-window.playlist = confirm("Christmas theme?") ? /*["37i9dQZF1DX0Yxoavh5qJV"]*/ ["1cSe1tbdYYYnyoP93yJlRA"] : [
+window.playlist = confirm("Custom playlist?") ? prompt("Playlist URL").split("/").at(-1) : confirm("Christmas theme?") ? /*["37i9dQZF1DX0Yxoavh5qJV"]*/ ["1cSe1tbdYYYnyoP93yJlRA"] : [
         "37i9dQZF1DWSThc8QnzIme", // Pop Drive (140)
         "37i9dQZF1DXcBWIGoYBM5M", // Today's Top Hits (50)
         "37i9dQZF1DX0kbJZpiYdZl", // Hot Hits USA (50)
@@ -10,7 +10,6 @@ window.playlist = confirm("Christmas theme?") ? /*["37i9dQZF1DX0Yxoavh5qJV"]*/ [
     ];
 let songs = [];
 let id = 0; //Song index
-
 let explicit = !confirm("Disable explicit content?"); //Allow explict content?
 
 let audioObject;
