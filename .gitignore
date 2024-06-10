@@ -1,0 +1,5 @@
+env.sh
+node_modules
+.breakpoints
+.replit
+replit.nix
